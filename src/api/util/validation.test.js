@@ -8,6 +8,7 @@ describe('Validation', () => {
             '',
             0,
             128,
+            [],
             {},
             { tst: 'abc' },
             new Date(),
@@ -54,6 +55,9 @@ describe('Validation', () => {
             0,
             true,
             false,
+            [],
+            {},
+            new Date(),
         ].forEach((testData) => {
             it(`Negative ${testData}`, () => {
                 assert.strictEqual(validation.isString(testData), false);
@@ -86,6 +90,9 @@ describe('Validation', () => {
             'a@',
             '@',
             'a@b',
+            [],
+            {},
+            new Date(),
         ].forEach((testData) => {
             it(`Negative ${testData}`, () => {
                 assert.strictEqual(validation.isEmail(testData), false);
@@ -118,6 +125,9 @@ describe('Validation', () => {
             'undefined',
             'password1234',
             'susagep',
+            [],
+            {},
+            new Date(),
         ].forEach((testData) => {
             it(`Negative ${testData}`, () => {
                 assert.strictEqual(validation.isPassword(testData), false);
@@ -187,6 +197,7 @@ describe('Validation', () => {
             1,
             128,
             new Date(),
+            [],
         ].forEach((testData) => {
             it(`Negative ${testData}`, () => {
                 assert.strictEqual(validation.isBool(testData), false);
