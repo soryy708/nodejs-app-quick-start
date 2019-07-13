@@ -125,6 +125,44 @@ describe('Validation', () => {
         });
     });
 
+    describe('isId', () => {
+        [
+            'aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa',
+            '11111111-1111-1111-8111-111111111111',
+            'a1a1a1a1-a1a1-1a1a-a1a1-1a1a1a1a1a1a',
+        ].forEach((testData) => {
+            it(`Positive ${testData}`, () => {
+                assert.strictEqual(validation.isId(testData), true);
+            });
+        });
+
+        [
+            undefined,
+            null,
+            true,
+            false,
+            0,
+            'true',
+            'false',
+            'undefined',
+            'null',
+            '12345678',
+            12345678,
+            [],
+            {},
+            ' aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa',
+            'aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa ',
+            '11111111-1111-1111-1111-111111111111',
+            'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
+            'aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaa',
+            'aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaaa',
+        ].forEach((testData) => {
+            it(`Negative ${testData}`, () => {
+                assert.strictEqual(validation.isId(testData), false);
+            });
+        });
+    });
+
     describe('isBool', () => {
         [
             true,

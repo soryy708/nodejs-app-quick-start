@@ -16,8 +16,8 @@ function isEmail(o) {
 
 function isPassword(o) {
     function validLength(s) {
-    const maxLength = 72; // bcrypt implementation uses only first 72 characters of a string
-    const minLength = 8;
+        const maxLength = 72; // bcrypt implementation uses only first 72 characters of a string
+        const minLength = 8;
         return s.length <= maxLength && s.length >= minLength;
     }
 
@@ -37,7 +37,7 @@ function isPassword(o) {
 }
 
 function isId(o) {
-    return true; // TODO
+    return isString(o) && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(o);
 }
 
 export default {
