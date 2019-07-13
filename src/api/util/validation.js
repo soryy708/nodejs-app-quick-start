@@ -11,7 +11,7 @@ function isString(o) {
 }
 
 function isEmail(o) {
-    return isString(o); // TODO
+    return isString(o) && /.+@.+\..+/u.test(o);
 }
 
 function isPassword(o) {

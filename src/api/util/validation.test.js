@@ -61,6 +61,38 @@ describe('Validation', () => {
         });
     });
 
+    describe('isEmail', () => {
+        [
+            'a@b.c',
+            'A@3b.2',
+            'qwerty@qazwsx.qwer',
+            'OMG@HOST.WHERE',
+        ].forEach((testData) => {
+            it(`Positive ${testData}`, () => {
+                assert.strictEqual(validation.isEmail(testData), true);
+            });
+        });
+
+        [
+            undefined,
+            null,
+            0,
+            true,
+            false,
+            12345678,
+            '',
+            'abc',
+            'Password1',
+            'a@',
+            '@',
+            'a@b',
+        ].forEach((testData) => {
+            it(`Negative ${testData}`, () => {
+                assert.strictEqual(validation.isEmail(testData), false);
+            });
+        });
+    });
+
     describe('isPassword', () => {
         [
             'Password1',
