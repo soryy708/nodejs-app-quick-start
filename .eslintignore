@@ -1,0 +1,4 @@
+/build/*
+/node_modules/*
+/src/api/node_modules/*
+/src/front/node_modules/*

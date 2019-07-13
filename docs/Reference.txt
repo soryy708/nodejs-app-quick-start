@@ -1,0 +1,3 @@
+http://docs.sequelizejs.com/class/lib/model.js~Model.html
+http://docs.sequelizejs.com/manual/data-types.html
+http://docs.sequelizejs.com/manual/querying.html

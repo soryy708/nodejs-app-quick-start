@@ -1,0 +1,16 @@
+.error-container {
+    background-color: #f80402;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    padding: 1em;
+    display: none;
+}
+
+.success-container {
+    background-color: #27db54;
+    font-weight: bold;
+    position: relative;
+    padding: 1em;
+    display: none;
+}
