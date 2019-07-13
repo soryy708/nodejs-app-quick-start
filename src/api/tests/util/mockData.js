@@ -84,10 +84,10 @@ function email() {
 
 function password() {
     return pickFrom([
-        '12345678',
-        'qwertyui',
-        'abc12345',
-        'password'
+        '12345678Ab',
+        'Qwertyui1',
+        'aBc12345',
+        'passworD1'
     ]);
 }
 
