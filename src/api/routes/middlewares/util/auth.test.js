@@ -14,10 +14,10 @@ describe('auth middleware util', () => {
                 describe('query model', () => {
                     function getExpected() {
                         switch (inclusionDepth) {
-                        case 0:
-                            return AuthToken;
-                        case 1:
-                            return User;
+                            case 0:
+                                return AuthToken;
+                            case 1:
+                                return User;
                         }
                     }
 
@@ -36,13 +36,13 @@ describe('auth middleware util', () => {
                     it('Expected value', () => {
                         function getExpected() {
                             switch (inclusionDepth) {
-                            case 0:
-                                return {
-                                    'id': tokenId,
-                                    'active': true,
-                                };
-                            case 1:
-                                return null;
+                                case 0:
+                                    return {
+                                        'id': tokenId,
+                                        'active': true,
+                                    };
+                                case 1:
+                                    return null;
                             }
                         }
 
@@ -70,17 +70,17 @@ describe('auth middleware util', () => {
                     it('Expected value', () => {
                         function getExpected() {
                             switch (inclusionDepth) {
-                            case 0:
-                                return [];
-                            case 1:
-                                return [{
-                                    model: AuthToken,
-                                    required: true,
-                                    where: {
-                                        'id': tokenId,
-                                        'active': true,
-                                    },
-                                }];
+                                case 0:
+                                    return [];
+                                case 1:
+                                    return [{
+                                        model: AuthToken,
+                                        required: true,
+                                        where: {
+                                            'id': tokenId,
+                                            'active': true,
+                                        },
+                                    }];
                             }
                         }
 

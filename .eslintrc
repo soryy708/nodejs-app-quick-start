@@ -75,7 +75,7 @@
         "no-path-concat": "error",
         "no-sync": "warn",
         "eol-last": "error",
-        "indent": "error",
+        "indent": ["error", 4, {"SwitchCase": 1}],
         "no-const-assign": "error",
         "no-dupe-class-members": "error",
         "no-duplicate-imports": "error",

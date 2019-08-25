@@ -87,14 +87,14 @@ function middlewareDelegate(req, res, next, inclusionDepth) {
         }
     
         switch (inclusionDepth) {
-        case 0:
-            req.requestingUserId = dbInstance.userId;
-            break;
-        
-        case 1:
-            req.requestingUser = dbInstance;
-            req.requestingUserId = dbInstance.id;
-            break;
+            case 0:
+                req.requestingUserId = dbInstance.userId;
+                break;
+            
+            case 1:
+                req.requestingUser = dbInstance;
+                req.requestingUserId = dbInstance.id;
+                break;
         }
     
         next();
