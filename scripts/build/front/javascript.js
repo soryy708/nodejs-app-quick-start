@@ -7,9 +7,10 @@ const browserify = require('browserify');
 const babelify = require('babelify');
 const babelConfig = require('../util/babelConfig').front;
 
-gulp.task('build-front/javascript/registration', () => {
+function build(entries, destination) {
     const browserified = browserify({
-        entries: ['../src/front/website/registration.js'],
+        entries: entries,
+        debug: true, // Enables sourcemaps
     }).transform(babelify.configure(babelConfig));
 
     return browserified.bundle()
@@ -18,7 +19,11 @@ gulp.task('build-front/javascript/registration', () => {
         .pipe(sourceMaps.init({loadMaps: true}))
         .pipe(uglify())
         .pipe(sourceMaps.write('.'))
-        .pipe(gulp.dest('../build/front/website'));
+        .pipe(gulp.dest(`../build/front/${destination}`));
+}
+
+gulp.task('build-front/javascript/registration', () => {
+    return build(['../src/front/website/registration.js'], 'website');
 });
 
 gulp.task('build-front/javascript', gulp.parallel('build-front/javascript/registration'));
