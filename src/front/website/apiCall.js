@@ -1,5 +1,15 @@
 export default function (method, route, data) {
     async function ajaxCall(method, url, data) {
+        function generateQueryStr(data) {
+            let queryStr = '';
+            for (const key of Object.keys(data)) {
+                const value = data[key];
+                queryStr += `${key}=${value}&`;
+            }
+            queryStr = queryStr.slice(0, -1); // remove last '&'
+            return queryStr;
+        }
+
         const authToken = sessionStorage.getItem('authToken');
 
         const headers = {
@@ -9,10 +19,14 @@ export default function (method, route, data) {
             headers.Authorization = authToken;
         }
 
-        const response = await fetch(url, {
+        let requestUrl = url;
+        if (method.toLowerCase() === 'get') {
+            requestUrl += `?${generateQueryStr(data)}`;
+        }
+        const response = await fetch(requestUrl, {
             method: method,
             headers: headers,
-            body: JSON.stringify(data),
+            body: method.toLowerCase() === 'get' ? undefined : JSON.stringify(data),
         });
 
         async function readData() {
