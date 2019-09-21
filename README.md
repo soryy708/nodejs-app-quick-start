@@ -6,7 +6,7 @@ Features:
 * DevOps scripts via [_gulp_](https://www.npmjs.com/package/gulp) and [_batch_](https://en.wikipedia.org/wiki/Batch_file)
 * Tests via [_mocha_](https://mochajs.org/) & [_supertest_](https://www.npmjs.com/package/supertest)
 * Plays a sound when a test fails
-* API is integrated with relational (SQL) database via [Sequelize ORM](http://docs.sequelizejs.com/)
+* API is integrated with relational (SQL) database via [_Sequelize ORM_](http://docs.sequelizejs.com/)
 * Authentication is already done
 * API can be packaged in to a standalone executable via [_pkg_](https://www.npmjs.com/package/pkg)
 * Logs errors in to database
