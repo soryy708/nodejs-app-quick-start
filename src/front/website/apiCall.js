@@ -27,7 +27,7 @@ export default function (method, route, data) {
         const responseData = await readData();
 
         if (!response.ok) {
-            throw responseData;
+            throw new Error({status: response.status, body: responseData});
         }
 
         return responseData;

@@ -45,9 +45,10 @@ function registrationSubmit(e) {
                 window.location.href = ''; // TODO
             }, redirectTimeoutDuration);
         })
-        .catch((error) => {
+        .catch((res) => {
+            const callError = res.body || res;
             errorContainer.style.display = 'inline-block';
-            errorContainer.innerText = registrationErrors[error] || error;
+            errorContainer.innerText = registrationErrors[callError] || callError;
         });
     
     return false;
