@@ -38,13 +38,16 @@ function bundle(bundler, root) {
     function getDir(path) {
         const parts = path.split('/');
         if (parts.length === 0) {
-            return parts;
+            return '';
         }
         return parts.slice(0, -1).join('/');
     }
 
     function getName(path) {
         const dir = getDir(path);
+        if (dir.length === 0) {
+            return path;
+        }
         return path.slice(dir.length + 1);
     }
 
