@@ -27,6 +27,14 @@ function createBundler(entry) {
 }
 
 function createBundlers() {
+    const srcPrefix = '../src/front/';
+    return frontRoots.map((root) => {
+        const bundler = createBundler(srcPrefix + root);
+        return [bundler, root];
+    });
+}
+
+function bundle(bundler, root) {
     function getDir(path) {
         const parts = path.split('/');
         if (parts.length === 0) {
@@ -35,37 +43,34 @@ function createBundlers() {
         return parts.slice(0, -1).join('/');
     }
 
-    const srcPrefix = '../src/front/';
-    return frontRoots.map((root) => {
-        const bundler = createBundler(srcPrefix + root);
-        return [bundler, getDir(root)];
-    });
-}
+    function getName(path) {
+        const dir = getDir(path);
+        return path.slice(dir.length + 1);
+    }
 
-function bundle(bundler, dest) {
     return bundler.bundle()
-        .pipe(vinylSource('app.js'))
+        .pipe(vinylSource(getName(root)))
         .pipe(vinylBuffer())
         .pipe(sourceMaps.init({loadMaps: true}))
         .pipe(uglify())
         .pipe(sourceMaps.write('.'))
-        .pipe(gulp.dest('../build/front/' + dest))
+        .pipe(gulp.dest('../build/front/' + getDir(root)))
         .on('error', console.error);
 }
 
 gulp.task('build-front/javascript', () => {
     const bundlers = createBundlers();
-    bundlers.forEach(([bundler, dest]) => {
-        bundle(bundler, dest);
+    bundlers.forEach(([bundler, root]) => {
+        bundle(bundler, root);
     });
 });
 
 gulp.task('watch-front/javascript', () => {
     const bundlers = createBundlers();
-    bundlers.forEach(([bundler, dest]) => {
-        bundle(bundler, dest); // required for watchify to work
+    bundlers.forEach(([bundler, root]) => {
+        bundle(bundler, root); // required for watchify to work
         bundler.on('update', () => {
-            bundle(bundler, dest);
+            bundle(bundler, root);
         });
     });
 });
