@@ -10,6 +10,7 @@ Features:
 * Authentication is already done
 * API can be packaged in to a standalone executable via [_pkg_](https://www.npmjs.com/package/pkg)
 * Logs errors in to database
+* Write front-end styles with style via [_Sass_](https://sass-lang.com/) (Scss), comes pre-configured
 * Pre-configured linter
 * Monorepo structure
 
