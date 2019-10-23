@@ -32,7 +32,7 @@ const sequelize = dbConfig.dialect === 'sqlite' ? (
 
     await sequelize.authenticate();
 
-    await sequelize.sync({alter: true}); // TODO: Delete this
+    await sequelize.sync();
 
     console.log('Done initializing sequelize');
 
