@@ -10,12 +10,12 @@
         "start-front": "start build/front/website/register.html",
         "start-api": "nodemon build/api",
         "lint": "eslint \"src/**/*.js\"",
-        "test": "npm run test-front & npm run test-api",
-        "test-front": "gulp test-front --gulpfile scripts/gulpfile.js",
-        "autotest-front": "gulp autotest-front --gulpfile scripts/gulpfile.js",
-        "test-api": "gulp test-api --gulpfile scripts/gulpfile.js",
-        "autotest-api": "gulp autotest-api --gulpfile scripts/gulpfile.js",
-        "package-api": "gulp package-api --gulpfile scripts/gulpfile.js"
+        "test": "cross-env NODE_ENV=test npm run test-front & npm run test-api",
+        "test-front": "cross-env NODE_ENV=test gulp test-front --gulpfile scripts/gulpfile.js",
+        "autotest-front": "cross-env NODE_ENV=test gulp autotest-front --gulpfile scripts/gulpfile.js",
+        "test-api": "cross-env NODE_ENV=test gulp test-api --gulpfile scripts/gulpfile.js",
+        "autotest-api": "cross-env NODE_ENV=test gulp autotest-api --gulpfile scripts/gulpfile.js",
+        "package-api": "cross-env NODE_ENV=test gulp package-api --gulpfile scripts/gulpfile.js"
     },
     "devDependencies": {
         "@babel/core": "^7.4.5",
@@ -26,6 +26,7 @@
         "audio-play": "^2.2.1",
         "babelify": "^10.0.0",
         "browserify": "^16.2.3",
+        "cross-env": "^6.0.3",
         "eslint": "^5.16.0",
         "eslint-plugin-import": "^2.17.3",
         "gulp": "^4.0.2",
