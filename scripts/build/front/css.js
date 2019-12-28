@@ -25,11 +25,11 @@ gulp.task('build-front/css/sass', () => {
 gulp.task('build-front/css', gulp.series('build-front/css/plain', 'build-front/css/sass'));
 
 gulp.task('watch-front/css/plain', () => {
-    return gulp.watch(cssAssets, gulp.series('build-front/css/plain'));
+    return gulp.watch(cssAssets, {ignoreInitial: false}, gulp.series('build-front/css/plain'));
 });
 
 gulp.task('watch-front/css/sass', () => {
-    return gulp.watch(sassAssets, gulp.series('build-front/css/sass'));
+    return gulp.watch(sassAssets, {ignoreInitial: false}, gulp.series('build-front/css/sass'));
 });
 
 gulp.task('watch-front/css', gulp.parallel('watch-front/css/plain', 'watch-front/css/sass'));

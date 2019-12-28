@@ -17,5 +17,5 @@ gulp.task('build-api/code', () => {
 });
 
 gulp.task('watch-api/code', () => {
-    return gulp.watch(codeAssets, gulp.series('build-api/code'));
+    return gulp.watch(codeAssets, {ignoreInitial: false}, gulp.series('build-api/code'));
 });

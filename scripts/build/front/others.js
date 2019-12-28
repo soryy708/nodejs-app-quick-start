@@ -17,5 +17,5 @@ gulp.task('build-front/others', () => {
 });
 
 gulp.task('watch-front/others', () => {
-    return gulp.watch(allAssets, gulp.series('build-front/others'));
+    return gulp.watch(allAssets, {ignoreInitial: false}, gulp.series('build-front/others'));
 });

@@ -19,8 +19,6 @@ gulp.task('test-api', (done) => {
     });
 });
 
-gulp.task('test-watch-api', () => {
-    return gulp.watch('../src/api/**/*.js', gulp.series('test-api'));
+gulp.task('autotest-api', () => {
+    return gulp.watch('../src/api/**/*.js', {ignoreInitial: false}, gulp.series('test-api'));
 });
-
-gulp.task('autotest-api', gulp.series('test-api', 'test-watch-api'));

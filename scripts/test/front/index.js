@@ -20,8 +20,6 @@ gulp.task('test-front', (done) => {
     });
 });
 
-gulp.task('test-watch-front', () => {
-    return gulp.watch('../src/front/**/*.js', gulp.series('test-front'));
+gulp.task('autotest-front', () => {
+    return gulp.watch('../src/front/**/*.js', {ignoreInitial: false}, gulp.series('test-front'));
 });
-
-gulp.task('autotest-front', gulp.series('test-front', 'test-watch-front'));
