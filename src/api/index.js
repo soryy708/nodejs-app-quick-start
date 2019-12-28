@@ -47,4 +47,17 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
 
+process
+    .on('unhandledRejection', (exception, promise) => {
+        console.log('Unhandled rejection at Promise');
+        console.log(exception.toString());
+        console.log(exception.stack);
+        console.log(promise);
+    })
+    .on('uncaughtException', exception => {
+        console.log('Unhandled exception thrown');
+        console.log(exception.toString());
+        console.log(exception.stack);
+    });
+
 export default app;
