@@ -2,7 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import routes from './routes';
 
-const port = 3000;
+// If port is omitted or is 0, the operating system will assign an arbitrary unused port
+const port = process.env.NODE_ENV === 'test' ? 0 : 3000;
 
 const app = express();
 
@@ -29,23 +30,7 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-const listener = app.listen(port, () => console.log(`Now listening on port ${port}`));
-if (process.env.NODE_ENV !== 'production') {
-    // We may have multiple instances of the application running when not in production.
-    // For example, an application & a superTest suite running at the same time.
-    // However, we do not want to accidentally run on the wrong port in production.
-    listener.on('error', (e) => {
-        if (e.errno === 'EADDRINUSE') {
-            console.warn(`Port ${port} already in use. Falling back to random port`);
-            const listener = app.listen(() => {
-                console.log(`Now listening on port ${listener.address().port}`);
-            });
-        }
-        else {
-            throw e;
-        }
-    });
-}
+const listener = app.listen(port, () => console.log(`Now listening on port ${listener.address().port}`));
 
 process
     .on('unhandledRejection', (exception, promise) => {
