@@ -15,7 +15,7 @@
         "autotest-front": "cross-env NODE_ENV=test gulp autotest-front --gulpfile scripts/gulpfile.js",
         "test-api": "cross-env NODE_ENV=test gulp test-api --gulpfile scripts/gulpfile.js",
         "autotest-api": "cross-env NODE_ENV=test gulp autotest-api --gulpfile scripts/gulpfile.js",
-        "package-api": "cross-env NODE_ENV=test gulp package-api --gulpfile scripts/gulpfile.js"
+        "package-api": "cross-env gulp package-api --gulpfile scripts/gulpfile.js"
     },
     "devDependencies": {
         "@babel/core": "^7.4.5",
